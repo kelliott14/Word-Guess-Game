@@ -4,6 +4,8 @@ var losses = 0;
 var guessesleft = 15;
 var guessedletters =[];
 var answerword = ["Game of Thrones","Black Mirror","The Good Place","Brooklyn Nine Nine","The Walking Dead"];
+var correctguesses;
+
 
 
 
@@ -20,10 +22,33 @@ function resetBoard(){
     guessedletters = [];
     }
 
+    //Picks the word from the list
+var theWord = answerword[Math.floor(Math.random() * answerword.length)];
+  
+//DELETE THIS LATER
+    console.log(theWord);
 
-    //function to pull out 1 string of answerword, using a random number to select setting answerword[i]
-    
     //Loop of charAt() to pull each letter from the answerword[i]
+    var wordDisplay = document.getElementById("the-word");
+        
+        function splitWord(){
+        
+            for (var i = 0; i < theWord.length; i++){
+            var eachLetter = theWord.charAt(i);
+            
+            
+            var letterDiv = document.createElement("div");
+                letterDiv.classList.add("invisibleLetter");
+
+            letterDiv.textContent = eachLetter;            
+            wordDisplay.appendChild(letterDiv);
+            
+        }
+        }
+
+splitWord(theWord);
+
+
 
     //put each letter into a separate div
 
@@ -47,26 +72,11 @@ function resetBoard(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//scoreboard
-winstally.textContent = "Wins: " + wins;
-lossestally.textContent = "Losses: " + losses;
-guesseslefttext.textContent = "Guesses Left: " + guessesleft;
-guessedletterstext.textContent = "Guessed So Far: " + guessedletters;
+// //scoreboard
+// winstally.textContent = "Wins: " + wins;
+// lossestally.textContent = "Losses: " + losses;
+// guesseslefttext.textContent = "Guesses Left: " + guessesleft;
+// guessedletterstext.textContent = "Guessed So Far: " + guessedletters;
 
 
 
@@ -75,7 +85,3 @@ guessedletterstext.textContent = "Guessed So Far: " + guessedletters;
 //set up 2 div styles: visible and invisible.
 //if the user guess = one of the property values, then the letter switches
     //div style from invisible to visible
-
-
-
-
