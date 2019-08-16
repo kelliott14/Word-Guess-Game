@@ -3,8 +3,8 @@ var wins = 0;
 var losses = 0;
 var guessesleft = 15;
 var guessedletters =[];
-var answerword = ["Game of Thrones","Black Mirror","The Good Place","Brooklyn Nine Nine","The Walking Dead"];
-var correctguesses;
+var answerword = ["GAME-OF-THRONES","BLACK-MIRROR","THE-GOOD-PLACE","BROOKLYN-NINE-NINE","THE-WALKING-DEAD"];
+var correctguesses = 0;
 
 
 
@@ -15,6 +15,7 @@ var lossestally = document.getElementById("losses-tally");
 var guesseslefttext = document.getElementById("guesses-tally");
 var guessedletterstext = document.getElementById("guessed-letters");
 var theanswer = document.getElementById("the-word");
+var correctguessestally = document.getElementById("correct-guesses-tally");
 
 //function to reset the scoreboard
 function resetBoard(){
@@ -28,7 +29,7 @@ var theWord = answerword[Math.floor(Math.random() * answerword.length)];
 //DELETE THIS LATER
     console.log(theWord);
 
-    //Loop of charAt() to pull each letter from the answerword[i]
+    //Loop of charAt() to pull each letter from the answerword[i] and put into separate div
     var wordDisplay = document.getElementById("the-word");
         
         function splitWord(){
@@ -39,23 +40,61 @@ var theWord = answerword[Math.floor(Math.random() * answerword.length)];
             
             var letterDiv = document.createElement("div");
                 letterDiv.classList.add("invisibleLetter");
+                letterDiv.classList.add(theWord[i]);
+                
 
             letterDiv.textContent = eachLetter;            
             wordDisplay.appendChild(letterDiv);
             
         }
+
+        function turnvisfunction (){
+            var turnvis = document.getElementsByClassName("-");
+            
+            for (var i=0; i < turnvis.length; i++){
+            
+            turnvis[i].classList.add("visibleLetter");
+            turnvis[i].classList.remove("invisibleLetter");
+            }}
+        turnvisfunction()
         }
 
 splitWord(theWord);
 
+    //Function for each keypress
+    document.onkeyup = function(event){
+            
+        var userGuess = event.key.toUpperCase();
+        
+        guessedletters.push(userGuess);
 
+        if (theWord.includes(userGuess) == true){
+            correctguesses++;
 
-    //put each letter into a separate div
+        {
+            guessesleft--;
+        }
+        }
+        console.log(theWord.includes(userGuess))
 
-    //append this div to existing html so it appears on the screen
+            function turnvisfunction (){
+            var turnvis = document.getElementsByClassName(userGuess);
+            
+            for (var i=0; i < turnvis.length; i++){
+            
+            
 
-    //set the style of the divs to an invisible style that shows only the bottom border
+            turnvis[i].classList.add("visibleLetter");
+            turnvis[i].classList.remove("invisibleLetter");
+            }}
 
+    turnvisfunction();
+        
+     
+            
+      //  }
+
+        
     //function for each letterpress, goes into the guessedletters var and guessesleft goes down by 1
         //if the letterpress equals the string inside any of the divs then the div changes style to visible
         //a correct letter then causes the correctguesses to goes up by 1
@@ -72,13 +111,14 @@ splitWord(theWord);
 
 
 
-// //scoreboard
-// winstally.textContent = "Wins: " + wins;
-// lossestally.textContent = "Losses: " + losses;
-// guesseslefttext.textContent = "Guesses Left: " + guessesleft;
-// guessedletterstext.textContent = "Guessed So Far: " + guessedletters;
+//scoreboard
+winstally.textContent = "Wins: " + wins;
+lossestally.textContent = "Losses: " + losses;
+guesseslefttext.textContent = "Guesses Left: " + guessesleft;
+guessedletterstext.textContent = "Guessed So Far: " + guessedletters;
+correctguessestally.textContent = "Correct Guesses: " + correctguesses;
 
-
+}
 
 //set the words up in an object with each letter as the property value
 //loop out the word to display each letter into its own div
