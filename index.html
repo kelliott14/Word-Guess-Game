@@ -5,40 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="Stylesheet" type="text/css" href="./assets/css/style.css">
 
-    <style>
-        .invisibleLetter{
-            width: 20px;
-            height: 20px;
-            border-bottom: solid 1px black;
-            text-indent: -1000px;
-            float: left;
-            margin: 2px;
-        }
-
-        .visibleLetter{
-            width: 20px;
-            height: 20px;
-            text-align: center;
-            float: left;
-            margin: 2px;
-            
-        }
-        
-    </style>
+    
 </head>
 <body>
-    <h1>The Word Guess Game</h1>
-    <p id="instructions-text">Press a letter to start guessing</p>
-    <p id="word-parent">
-        <p id="the-word"></p>
-    </p>
-   <br>
-    <p id="wins-tally"></p>
-    <p id="losses-tally"></p>
-    <p id="guesses-tally"></p>
-    <p id="guessed-letters"></p>
-    <script src="./assets/javascript/game.js"></script>
+    <div class="container" style="height: 100%">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="card-title">Guess the TV Show!</h1>
+            </div>
+        </div>
+
+        <div class="row" style="height: 60%">
+            <div class="card" style="width: 70%">
+                <div class="card-body">   
+                    <div class="instructions-word">
+                    <p id="instructions-text">Press a letter to start guessing</p>
+                        <p id="word-parent">
+                            <p id="the-word"></p>
+                        </p>
+                    </div>
+                    <div class= "scorecard">
+                        <p id="wins-tally"></p>
+                        <p id="losses-tally"></p>
+                        <p id="guesses-tally"></p>
+                        <p id="guessed-letters"></p>
+                    </div>
+                    <div class="the-last-answer">
+                        <p id="last-answer"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+
+<script src="./assets/javascript/game.js"></script>
 </body>
 </html>

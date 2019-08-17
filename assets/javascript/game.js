@@ -5,7 +5,7 @@ var wins = 0;
 var losses = 0;
 var guessesleft = 15;
 var guessedletters =[];
-var answerword = ["GAME_OF_THRONES","BLACK_MIRROR","THE_GOOD_PLACE","BROOKLYN_NINE_NINE","THE_WALKING_DEAD"];
+var answerword = ["GAME_OF_THRONES","BLACK_MIRROR","THE_GOOD_PLACE","BROOKLYN_NINE_NINE","THE_WALKING_DEAD","STRANGER_THINGS","KILLING_EVE","BREAKING_BAD","THE_OFFICE"];
 
 //variables to pull in the IDs from the HTML
 var instructions = document.getElementById("instructions-text");
@@ -13,6 +13,7 @@ var winstally = document.getElementById("wins-tally");
 var lossestally = document.getElementById("losses-tally");
 var guesseslefttext = document.getElementById("guesses-tally");
 var guessedletterstext = document.getElementById("guessed-letters");
+var lastanswer = document.getElementById("last-answer");
 
 //variables of the parent ID and the child ID that the letters sit in
 var wordParent = document.getElementById("word-parent");
@@ -111,9 +112,6 @@ document.onkeyup = function(event){
     }
     }
 
-    
-        
-
     //Function to turn the correct letters visible
     function turnvisfunction (){
         //variable to get the userGuess from the keypress function
@@ -138,7 +136,7 @@ document.onkeyup = function(event){
             resetgame();
     }
 
-
+    //Losing if statement
     if(guessesleft == 0){
         losses++
         resetgame();

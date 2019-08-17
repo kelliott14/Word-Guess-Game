@@ -1,0 +1,38 @@
+body, 
+html{
+    height: 100%;
+    background-image: url("../images/tv-stand.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.invisibleLetter{
+    width: 20px;
+    height: 20px;
+    border-bottom: solid 1px black;
+    text-indent: -1000px;
+    float: left;
+    margin: 2px;
+}
+
+.visibleLetter{
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    float: left;
+    margin: 2px;
+    
+}
+
+.scorecard,
+.instructions-word,
+.the-last-answer{
+    float: left;
+    width: 100%;
+}
+
+.scorecard{
+    margin-top: 30px;
+}
