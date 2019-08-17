@@ -93,22 +93,25 @@ document.onkeyup = function(event){
     //variable to change each key press to upper case to match the set word
     var userGuess = event.key.toUpperCase();
     
+    //if the key press has not already been guessed, it will run the below.
+    if (guessedletters.includes(userGuess) == false){
     //pushes the key press into the displayed guessed letters
     guessedletters.push(userGuess);
+        
+        //when a letter matches a letter in the word the turnvisfunction is run
+        if (theWord.includes(userGuess) == true){
+            turnvisfunction();
 
-    //when a letter matches a letter in the word the turnvisfunction is run
-    if (theWord.includes(userGuess) == true){
-        turnvisfunction();
-
-    //else if the guessesleft variable is greater than 0, the count goes down by 1
-    }else if (guessesleft > 0){
-        guessesleft--;
-    
-    //else the losses count goes up by 1 and the game resets.
-    }else{
-        losses++
-        resetgame();
+        //else if the guessesleft variable is greater than 0, the count goes down by 1
+        }else if (guessesleft > 0){
+            guessesleft--;
+        
+        //else the losses count goes up by 1 and the game resets.
+        
     }
+    }
+
+    
         
 
     //Function to turn the correct letters visible
@@ -135,6 +138,12 @@ document.onkeyup = function(event){
             resetgame();
     }
 
+
+    if(guessesleft == 0){
+        losses++
+        resetgame();
+    }
+
     //Function to reset the game
     function resetgame(){
         resetBoard();
@@ -145,7 +154,7 @@ document.onkeyup = function(event){
     winstally.textContent = "Wins: " + wins;
     lossestally.textContent = "Losses: " + losses;
     guesseslefttext.textContent = "Guesses Left: " + guessesleft;
-    guessedletterstext.textContent = "Guessed So Far: " + guessedletters;
+    guessedletterstext.textContent = "Guessed So Far: " + guessedletters.join(", ");
 
 
 }
